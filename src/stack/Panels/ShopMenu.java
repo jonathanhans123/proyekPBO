@@ -1,5 +1,6 @@
 package stack.Panels;
 
+import stack.Leaderboard;
 import stack.Main;
 import stack.Screen;
 import stack.entities.Player;
@@ -14,10 +15,13 @@ import java.util.TimerTask;
 public class ShopMenu extends JPanel{
     private JPanel panel1;
     private JButton button1;
+    private JButton OkButton;
     private JButton a10DMG50CoinsButton;
     private JButton a5HP50CoinsButton;
     private JLabel playerhealth;
     private JLabel playercoins;
+    private JComboBox comboBox;
+    private JButton okButton;
     Timer t = new Timer();
 
     Thread thread1 = new Thread(new Runnable() {
@@ -34,9 +38,26 @@ public class ShopMenu extends JPanel{
         }
     };
 
+    public static void main(String[] args) {
+        Main.p = new Player(200, 200, 80, 80, 0, 0, "",1);
+
+        JFrame frame = new JFrame("ShopMenu");
+        frame.setContentPane(new ShopMenu().panel1);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+    }
 
     public ShopMenu() {
+
+        comboBox.addItem("Silver Sword");
+        comboBox.addItem("Gold Sword");
+        comboBox.addItem("Diamond Sword");
+
         thread1.start();
+
+        Main.p.setCoins(10000);
+
         playercoins.setText(String.valueOf(Main.p.getCoins()));
         button1.addActionListener(new ActionListener() {
             @Override
@@ -76,6 +97,33 @@ public class ShopMenu extends JPanel{
                 }
             }
         });
+        okButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String terpilih = comboBox.getSelectedItem().toString();
+                if(Main.p.getCoins()>=100&&terpilih.equalsIgnoreCase("Silver Sword")){
+                    Main.p.setCoins(Main.p.getCoins()-100);
+                    JOptionPane.showMessageDialog(null, terpilih);
+                    Main.p.setTipe(2);
+                    Main.p.setDamage(25);
+                }else if(Main.p.getCoins()>=150&&terpilih.equalsIgnoreCase("Gold Sword")){
+                    Main.p.setCoins(Main.p.getCoins()-150);
+                    JOptionPane.showMessageDialog(null, terpilih);
+                    Main.p.setTipe(3);
+                    Main.p.setDamage(35);
+                }else if(Main.p.getCoins()>=200&&terpilih.equalsIgnoreCase("Diamond Sword")){
+                    Main.p.setCoins(Main.p.getCoins()-200);
+                    JOptionPane.showMessageDialog(null, terpilih);
+                    Main.p.setTipe(4);
+                    Main.p.setDamage(45);
+                }else{
+                    JOptionPane.showMessageDialog(button1,"You dont have enough money :(");
+
+                }
+
+
+            }
+        });
     }
 
     public JPanel getPanel1() {
@@ -85,4 +133,6 @@ public class ShopMenu extends JPanel{
     public void setPanel1(JPanel panel1) {
         this.panel1 = panel1;
     }
+
+
 }

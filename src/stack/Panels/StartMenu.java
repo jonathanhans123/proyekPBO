@@ -46,9 +46,9 @@ public class StartMenu extends JPanel {
                 if (Main.psave.size()<4) {
                     String name = JOptionPane.showInputDialog(null, "Enter your name!(wait 5 sec before start");
                     if (name.equalsIgnoreCase("cheat")){
-                        Main.p = new Player(200, 200, 80, 80, 0, 0, name,1000,1000,100,1,0);
+                        Main.p = new Player(200, 200, 80, 80, 0, 0, name,1000,1000,100,1,0,1);
                     }else {
-                        Main.p = new Player(200, 200, 80, 80, 0, 0, name);
+                        Main.p = new Player(200, 200, 80, 80, 0, 0, name,1);
                     }
                     Main.frame.dispose();
                     frame.setContentPane(new Frames().getMainpanel());
@@ -64,7 +64,7 @@ public class StartMenu extends JPanel {
                         Main.p = new Player(200,200,80,80,0,0,Main.psave.get(0),
                                 Integer.parseInt(Main.psave.get(1)), Integer.parseInt(Main.psave.get(2)),
                                 Integer.parseInt(Main.psave.get(3)),Integer.parseInt(Main.psave.get(4)),
-                                Integer.parseInt(Main.psave.get(5)));
+                                Integer.parseInt(Main.psave.get(5)),1);
                         Main.frame.dispose();
                         frame.setContentPane(new Frames().getMainpanel());
                         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -76,9 +76,9 @@ public class StartMenu extends JPanel {
                         Main.resetPlayer();
                         String name = JOptionPane.showInputDialog(null, "Enter your name!(wait 5 sec before start");
                         if (name.equalsIgnoreCase("cheat")){
-                            Main.p = new Player(200, 200, 80, 80, 0, 0, name,1000,1000,100,1,0);
+                            Main.p = new Player(200, 200, 80, 80, 0, 0, name,1000,1000,100,1,0,1);
                         }else {
-                            Main.p = new Player(200, 200, 80, 80, 0, 0, name);
+                            Main.p = new Player(200, 200, 80, 80, 0, 0, name,1);
                         }
                         Main.frame.dispose();
                         frame.setContentPane(new Frames().getMainpanel());

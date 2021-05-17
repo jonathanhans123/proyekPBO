@@ -8,6 +8,15 @@ public class Player extends Entity implements Cloneable  {
     private boolean attack = false;
     private String name;
     private int time;
+    private int tipe;
+
+    public int getTipe() {
+        return tipe;
+    }
+
+    public void setTipe(int tipe) {
+        this.tipe = tipe;
+    }
 
     public int getTime() {
         return time;
@@ -81,7 +90,7 @@ public class Player extends Entity implements Cloneable  {
         this.healthregen = healthregen;
     }
 
-    public Player(int x, int y, int width, int height, int dx, int dy,String name) {
+    public Player(int x, int y, int width, int height, int dx, int dy,String name,int tipe) {
         super(x,y,width,height,dx,dy);
         setHealth(100);
         setDamage(20);
@@ -93,9 +102,11 @@ public class Player extends Entity implements Cloneable  {
         lastpressed=68;
         setName(name);
         setTime(0);
+        setTipe(1);
+
     }
 
-    public Player(int x, int y, int width, int height, int dx, int dy,String name,int health,int attack,int regen,int stage,int time) {
+    public Player(int x, int y, int width, int height, int dx, int dy,String name,int health,int attack,int regen,int stage,int time,int tipe) {
         super(x,y,width,height,dx,dy);
         setName(name);
         setHealth(health);
@@ -107,6 +118,7 @@ public class Player extends Entity implements Cloneable  {
         setStage(stage);
         setTime(time);
         lastpressed=68;
+        setTipe(1);
     }
 
     public int getMaxhealth() {
@@ -119,46 +131,180 @@ public class Player extends Entity implements Cloneable  {
 
     @Override
     public void draw(Graphics g) {
-        if (right) {
-            g.drawImage(rightplayer.getImage(), this.x, this.y, this.width, this.height, null);
-            if (isAttack()) {
-                g.drawImage(new ImageIcon(getClass().getResource("/resources/swordright.gif")).getImage(), (int) getX() + 60, (int) getY(), 100, 100, null);
+        if (tipe == 1) {
+            if (right) {
+                g.drawImage(rightplayer.getImage(), this.x, this.y, this.width, this.height, null);
+                if (isAttack()) {
+                    g.drawImage(new ImageIcon(getClass().getResource("/resources/swordright.gif")).getImage(), (int) getX() + 60, (int) getY(), 100, 100, null);
+                }
+            } else if (left) {
+                g.drawImage(leftplayer.getImage(), this.x, this.y, this.width, this.height, null);
+                if (isAttack()) {
+                    g.drawImage(new ImageIcon(getClass().getResource("/resources/swordleft.gif")).getImage(), (int) getX() - 50, (int) getY(), 100, 100, null);
+                }
+            } else if (up) {
+                if (isAttack()) {
+                    g.drawImage(new ImageIcon(getClass().getResource("/resources/swordup.gif")).getImage(), (int) getX(), (int) getY() - 50, 100, 100, null);
+                }
+                g.drawImage(upplayer.getImage(), this.x, this.y, this.width, this.height, null);
+            } else if (down) {
+                g.drawImage(downplayer.getImage(), this.x, this.y, this.width, this.height, null);
+                if (isAttack()) {
+                    g.drawImage(new ImageIcon(getClass().getResource("/resources/sworddown.gif")).getImage(), (int) getX(), (int) getY() + 60, 100, 100, null);
+                }
+            } else if (lastpressed == 65) {
+                g.drawImage(leftplayer.getImage(), this.x, this.y, this.width, this.height, null);
+                if (isAttack()) {
+                    g.drawImage(new ImageIcon(getClass().getResource("/resources/swordleft.gif")).getImage(), (int) getX() - 50, (int) getY(), 100, 100, null);
+                }
+            } else if (lastpressed == 68) {
+                g.drawImage(rightplayer.getImage(), this.x, this.y, this.width, this.height, null);
+                if (isAttack()) {
+                    g.drawImage(new ImageIcon(getClass().getResource("/resources/swordright.gif")).getImage(), (int) getX() + 60, (int) getY(), 100, 100, null);
+                }
+            } else if (lastpressed == 83) {
+                g.drawImage(downplayer.getImage(), this.x, this.y, this.width, this.height, null);
+                if (isAttack()) {
+                    g.drawImage(new ImageIcon(getClass().getResource("/resources/sworddown.gif")).getImage(), (int) getX(), (int) getY() + 60, 100, 100, null);
+                }
+            } else if (lastpressed == 87) {
+                if (isAttack()) {
+                    g.drawImage(new ImageIcon(getClass().getResource("/resources/swordup.gif")).getImage(), (int) getX(), (int) getY() - 50, 100, 100, null);
+                }
+                g.drawImage(upplayer.getImage(), this.x, this.y, this.width, this.height, null);
+
             }
-        } else if (left) {
-            g.drawImage(leftplayer.getImage(), this.x, this.y, this.width, this.height, null);
-            if (isAttack()) {
-                g.drawImage(new ImageIcon(getClass().getResource("/resources/swordleft.gif")).getImage(), (int) getX() - 50, (int) getY(), 100, 100, null);
+        }else if(tipe==2){
+            if (right) {
+                g.drawImage(rightplayer.getImage(), this.x, this.y, this.width, this.height, null);
+                if (isAttack()) {
+                    g.drawImage(new ImageIcon(getClass().getResource("/resources/SSwordright.gif")).getImage(), (int) getX() + 60, (int) getY(), 100, 100, null);
+                }
+            } else if (left) {
+                g.drawImage(leftplayer.getImage(), this.x, this.y, this.width, this.height, null);
+                if (isAttack()) {
+                    g.drawImage(new ImageIcon(getClass().getResource("/resources/SSwordleft.gif")).getImage(), (int) getX() - 50, (int) getY(), 100, 100, null);
+                }
+            } else if (up) {
+                if (isAttack()) {
+                    g.drawImage(new ImageIcon(getClass().getResource("/resources/SSwordup.gif")).getImage(), (int) getX(), (int) getY() - 50, 100, 100, null);
+                }
+                g.drawImage(upplayer.getImage(), this.x, this.y, this.width, this.height, null);
+            } else if (down) {
+                g.drawImage(downplayer.getImage(), this.x, this.y, this.width, this.height, null);
+                if (isAttack()) {
+                    g.drawImage(new ImageIcon(getClass().getResource("/resources/SSworddown.gif")).getImage(), (int) getX(), (int) getY() + 60, 100, 100, null);
+                }
+            } else if (lastpressed == 65) {
+                g.drawImage(leftplayer.getImage(), this.x, this.y, this.width, this.height, null);
+                if (isAttack()) {
+                    g.drawImage(new ImageIcon(getClass().getResource("/resources/SSwordleft.gif")).getImage(), (int) getX() - 50, (int) getY(), 100, 100, null);
+                }
+            } else if (lastpressed == 68) {
+                g.drawImage(rightplayer.getImage(), this.x, this.y, this.width, this.height, null);
+                if (isAttack()) {
+                    g.drawImage(new ImageIcon(getClass().getResource("/resources/SSwordright.gif")).getImage(), (int) getX() + 60, (int) getY(), 100, 100, null);
+                }
+            } else if (lastpressed == 83) {
+                g.drawImage(downplayer.getImage(), this.x, this.y, this.width, this.height, null);
+                if (isAttack()) {
+                    g.drawImage(new ImageIcon(getClass().getResource("/resources/SSworddown.gif")).getImage(), (int) getX(), (int) getY() + 60, 100, 100, null);
+                }
+            } else if (lastpressed == 87) {
+                if (isAttack()) {
+                    g.drawImage(new ImageIcon(getClass().getResource("/resources/SSwordup.gif")).getImage(), (int) getX(), (int) getY() - 50, 100, 100, null);
+                }
+                g.drawImage(upplayer.getImage(), this.x, this.y, this.width, this.height, null);
+
             }
-        } else if (up) {
-            if (isAttack()) {
-                g.drawImage(new ImageIcon(getClass().getResource("/resources/swordup.gif")).getImage(), (int) getX(), (int) getY() - 50, 100, 100, null);
+
+        }else if(tipe==3){
+            if (right) {
+                g.drawImage(rightplayer.getImage(), this.x, this.y, this.width, this.height, null);
+                if (isAttack()) {
+                    g.drawImage(new ImageIcon(getClass().getResource("/resources/GSwordright.gif")).getImage(), (int) getX() + 60, (int) getY(), 100, 100, null);
+                }
+            } else if (left) {
+                g.drawImage(leftplayer.getImage(), this.x, this.y, this.width, this.height, null);
+                if (isAttack()) {
+                    g.drawImage(new ImageIcon(getClass().getResource("/resources/GSwordleft.gif")).getImage(), (int) getX() - 50, (int) getY(), 100, 100, null);
+                }
+            } else if (up) {
+                if (isAttack()) {
+                    g.drawImage(new ImageIcon(getClass().getResource("/resources/GSwordup.gif")).getImage(), (int) getX(), (int) getY() - 50, 100, 100, null);
+                }
+                g.drawImage(upplayer.getImage(), this.x, this.y, this.width, this.height, null);
+            } else if (down) {
+                g.drawImage(downplayer.getImage(), this.x, this.y, this.width, this.height, null);
+                if (isAttack()) {
+                    g.drawImage(new ImageIcon(getClass().getResource("/resources/GSworddown.gif")).getImage(), (int) getX(), (int) getY() + 60, 100, 100, null);
+                }
+            } else if (lastpressed == 65) {
+                g.drawImage(leftplayer.getImage(), this.x, this.y, this.width, this.height, null);
+                if (isAttack()) {
+                    g.drawImage(new ImageIcon(getClass().getResource("/resources/GSwordleft.gif")).getImage(), (int) getX() - 50, (int) getY(), 100, 100, null);
+                }
+            } else if (lastpressed == 68) {
+                g.drawImage(rightplayer.getImage(), this.x, this.y, this.width, this.height, null);
+                if (isAttack()) {
+                    g.drawImage(new ImageIcon(getClass().getResource("/resources/GSwordright.gif")).getImage(), (int) getX() + 60, (int) getY(), 100, 100, null);
+                }
+            } else if (lastpressed == 83) {
+                g.drawImage(downplayer.getImage(), this.x, this.y, this.width, this.height, null);
+                if (isAttack()) {
+                    g.drawImage(new ImageIcon(getClass().getResource("/resources/GSworddown.gif")).getImage(), (int) getX(), (int) getY() + 60, 100, 100, null);
+                }
+            } else if (lastpressed == 87) {
+                if (isAttack()) {
+                    g.drawImage(new ImageIcon(getClass().getResource("/resources/GSwordup.gif")).getImage(), (int) getX(), (int) getY() - 50, 100, 100, null);
+                }
+                g.drawImage(upplayer.getImage(), this.x, this.y, this.width, this.height, null);
+
             }
-            g.drawImage(upplayer.getImage(), this.x, this.y, this.width, this.height, null);
-        } else if (down) {
-            g.drawImage(downplayer.getImage(), this.x, this.y, this.width, this.height, null);
-            if (isAttack()) {
-                g.drawImage(new ImageIcon(getClass().getResource("/resources/sworddown.gif")).getImage(), (int) getX(), (int) getY() + 60, 100, 100, null);
+
+        }else if(tipe==4){
+            if (right) {
+                g.drawImage(rightplayer.getImage(), this.x, this.y, this.width, this.height, null);
+                if (isAttack()) {
+                    g.drawImage(new ImageIcon(getClass().getResource("/resources/DSwordright.gif")).getImage(), (int) getX() + 60, (int) getY(), 100, 100, null);
+                }
+            } else if (left) {
+                g.drawImage(leftplayer.getImage(), this.x, this.y, this.width, this.height, null);
+                if (isAttack()) {
+                    g.drawImage(new ImageIcon(getClass().getResource("/resources/DSwordleft.gif")).getImage(), (int) getX() - 50, (int) getY(), 100, 100, null);
+                }
+            } else if (up) {
+                if (isAttack()) {
+                    g.drawImage(new ImageIcon(getClass().getResource("/resources/DSwordup.gif")).getImage(), (int) getX(), (int) getY() - 50, 100, 100, null);
+                }
+                g.drawImage(upplayer.getImage(), this.x, this.y, this.width, this.height, null);
+            } else if (down) {
+                g.drawImage(downplayer.getImage(), this.x, this.y, this.width, this.height, null);
+                if (isAttack()) {
+                    g.drawImage(new ImageIcon(getClass().getResource("/resources/DSworddown.gif")).getImage(), (int) getX(), (int) getY() + 60, 100, 100, null);
+                }
+            } else if (lastpressed == 65) {
+                g.drawImage(leftplayer.getImage(), this.x, this.y, this.width, this.height, null);
+                if (isAttack()) {
+                    g.drawImage(new ImageIcon(getClass().getResource("/resources/DSwordleft.gif")).getImage(), (int) getX() - 50, (int) getY(), 100, 100, null);
+                }
+            } else if (lastpressed == 68) {
+                g.drawImage(rightplayer.getImage(), this.x, this.y, this.width, this.height, null);
+                if (isAttack()) {
+                    g.drawImage(new ImageIcon(getClass().getResource("/resources/DSwordright.gif")).getImage(), (int) getX() + 60, (int) getY(), 100, 100, null);
+                }
+            } else if (lastpressed == 83) {
+                g.drawImage(downplayer.getImage(), this.x, this.y, this.width, this.height, null);
+                if (isAttack()) {
+                    g.drawImage(new ImageIcon(getClass().getResource("/resources/DSworddown.gif")).getImage(), (int) getX(), (int) getY() + 60, 100, 100, null);
+                }
+            } else if (lastpressed == 87) {
+                if (isAttack()) {
+                    g.drawImage(new ImageIcon(getClass().getResource("/resources/DSwordup.gif")).getImage(), (int) getX(), (int) getY() - 50, 100, 100, null);
+                }
+                g.drawImage(upplayer.getImage(), this.x, this.y, this.width, this.height, null);
+
             }
-        } else if (lastpressed==65){
-            g.drawImage(leftplayer.getImage(), this.x, this.y, this.width, this.height, null);
-            if (isAttack()) {
-                g.drawImage(new ImageIcon(getClass().getResource("/resources/swordleft.gif")).getImage(), (int) getX() - 50, (int) getY(), 100, 100, null);
-            }
-        } else if (lastpressed==68){
-            g.drawImage(rightplayer.getImage(), this.x, this.y, this.width, this.height, null);
-            if (isAttack()) {
-                g.drawImage(new ImageIcon(getClass().getResource("/resources/swordright.gif")).getImage(), (int) getX() + 60, (int) getY(), 100, 100, null);
-            }
-        } else if (lastpressed==83){
-            g.drawImage(downplayer.getImage(), this.x, this.y, this.width, this.height, null);
-            if (isAttack()) {
-                g.drawImage(new ImageIcon(getClass().getResource("/resources/sworddown.gif")).getImage(), (int) getX(), (int) getY() + 60, 100, 100, null);
-            }
-        } else if (lastpressed==87){
-            if (isAttack()) {
-                g.drawImage(new ImageIcon(getClass().getResource("/resources/swordup.gif")).getImage(), (int) getX(), (int) getY() - 50, 100, 100, null);
-            }
-            g.drawImage(upplayer.getImage(), this.x, this.y, this.width, this.height, null);
 
         }
     }
