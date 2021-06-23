@@ -7,6 +7,7 @@ import stack.entities.Player;
 
 import javax.swing.*;
 
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -137,6 +138,18 @@ public class StartMenu extends JPanel {
             if (Main.frame.isVisible()) {
                 frame.dispose();
                 Main.p = null;
+            }
+            if (Main.go == false){
+                frame.dispose();
+                if (!frame.isVisible()) {
+                    Main.go = true;
+                    frame.setContentPane(new Frames().getMainpanel());
+                    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    frame.pack();
+                    frame.setLocationRelativeTo(null);
+                    frame.setResizable(false);
+                    frame.setVisible(true);
+                }
             }
         }
     };
