@@ -63,12 +63,22 @@ public class Frames {
                 listmodel.addElement("enemy "+(x+1)+" "+screen1.enemies.get(x).getHealth()+" "+(int) screen1.enemies.get(x).getX()+" "+(int)screen1.enemies.get(x).getY());
             }
             list1.setModel(listmodel);
+            try{
             health.setText("Health : "+ Main.p.getHealth()+"/"+Main.p.getMaxhealth());
             damage.setText("Damage : " + Main.p.getDamage());
             speed.setText("Speed  : "+ Main.p.getSpeed());
             healthRegen.setText("Regen  : "+Main.p.getHealthregen());
             coins.setText("Coins  : "+Main.p.getCoins());
             stage.setText("STAGE - "+Main.p.getStage());
+            }catch (Exception ex){
+                System.out.println(ex.toString());
+                health.setText("Health : "+ Main.p.getHealth()+"/"+Main.p.getMaxhealth());
+                damage.setText("Damage : " + Main.p.getDamage());
+                speed.setText("Speed  : "+ Main.p.getSpeed());
+                healthRegen.setText("Regen  : "+Main.p.getHealthregen());
+                coins.setText("Coins  : "+Main.p.getCoins());
+                stage.setText("STAGE - "+Main.p.getStage());
+            }
             if (screen1.clock%60<10) {
                 time.setText("TIME " + screen1.clock / 60 + ":0" + screen1.clock % 60);
             }else {
