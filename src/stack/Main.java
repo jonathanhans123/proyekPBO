@@ -26,7 +26,8 @@ public class Main {
     public static Music music2 = new Music();
     public static Music music3 = new Music();
     public static Music music4 = new Music();
-    public int difficult;
+    public static int difficult;
+    public static boolean go = true;
 
 
     public static void saveLeaderboards(){

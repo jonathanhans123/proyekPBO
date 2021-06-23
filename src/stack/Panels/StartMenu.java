@@ -51,7 +51,7 @@ public class StartMenu extends JPanel {
                         Main.p = new Player(200, 200, 80, 80, 0, 0, name,1);
                     }
                     Main.frame.dispose();
-                    frame.setContentPane(new Frames().getMainpanel());
+                    frame.setContentPane(new Difficult().getPanel1());
                     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     frame.pack();
                     frame.setLocationRelativeTo(null);
@@ -66,7 +66,7 @@ public class StartMenu extends JPanel {
                                 Integer.parseInt(Main.psave.get(3)),Integer.parseInt(Main.psave.get(4)),
                                 Integer.parseInt(Main.psave.get(5)),1);
                         Main.frame.dispose();
-                        frame.setContentPane(new Frames().getMainpanel());
+                        frame.setContentPane(new Difficult().getPanel1());
                         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                         frame.pack();
                         frame.setLocationRelativeTo(null);
@@ -81,7 +81,7 @@ public class StartMenu extends JPanel {
                             Main.p = new Player(200, 200, 80, 80, 0, 0, name,1);
                         }
                         Main.frame.dispose();
-                        frame.setContentPane(new Frames().getMainpanel());
+                        frame.setContentPane(new Difficult().getPanel1());
                         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                         frame.pack();
                         frame.setLocationRelativeTo(null);
@@ -134,7 +134,7 @@ public class StartMenu extends JPanel {
     TimerTask task1 = new TimerTask() {
         @Override
         public void run() {
-            if (Main.frame.isVisible()){
+            if (Main.frame.isVisible()) {
                 frame.dispose();
                 Main.p = null;
             }
@@ -159,7 +159,6 @@ public class StartMenu extends JPanel {
             }
         }
     };
-
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("StartMenu");

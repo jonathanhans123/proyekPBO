@@ -1,5 +1,7 @@
 package stack.Panels;
 
+import stack.Main;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,6 +16,9 @@ public class Difficult {
 
     JFrame frame = new JFrame("Difficult");
 
+    public JPanel getPanel1() {
+        return difficult;
+    }
 
     public Difficult() {
         EASYButton.addActionListener(new ActionListener() {
