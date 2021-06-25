@@ -48,6 +48,8 @@ public class Screen extends JPanel implements ActionListener, KeyListener,Clonea
                         tiles.add(new Tile(false, x * 100, y * 100, 3));
                     }else if (stage.rooms.get(stage.getRoomx() + (stage.getRoomy() * 3)).getRoomData()[y][x] == 4) {
                         tiles.add(new Tile(false, x * 100, y * 100, 4));
+                    }else if (stage.rooms.get(stage.getRoomx() + (stage.getRoomy() * 3)).getRoomData()[y][x] == 5) {
+                        tiles.add(new Tile(false, x * 100, y * 100, 5));
                     }
                 }
             }
