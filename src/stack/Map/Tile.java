@@ -44,6 +44,9 @@ public class Tile extends Rectangle {
         }else if (getId()==4){
             g.drawImage(new ImageIcon(getClass().getResource("/resources/floor2.jpg")).getImage(),(int) getX(),(int) getY(),null,null);
             g.drawImage(new ImageIcon(getClass().getResource("/resources/wizard1.gif")).getImage(),(int) getX(),(int) getY(),null,null);
+        }else if (getId()==5){
+            g.drawImage(new ImageIcon(getClass().getResource("/resources/floor2.jpg")).getImage(),(int) getX(),(int) getY(),null,null);
+            g.drawImage(new ImageIcon(getClass().getResource("/resources/GoldChest.gif")).getImage(),(int) getX(),(int) getY(),null,null);
         }
     }
 }
