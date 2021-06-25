@@ -80,12 +80,39 @@ public class Enemy extends Entity{
 
     public Enemy(int x, int y, int width, int height, int dx, int dy,int id) {
         super(x,y,width,height,dx,dy);
-        if (id==5){
+        if (Main.difficult == 1) {
             setHealth(1000);
             setAttack(100);
+        } else if (Main.difficult == 2) {
+            setHealth(1500);
+            setAttack(150);
+        } else if (Main.difficult == 3) {
+            setHealth(2000);
+            setAttack(200);
+        }
+
+        if (id == 5) {
+            if (Main.difficult == 1) {
+                setHealth(2000);
+                setAttack(200);
+            } else if (Main.difficult == 2) {
+                setHealth(2500);
+                setAttack(300);
+            } else if (Main.difficult == 3) {
+                setHealth(3000);
+                setAttack(400);
+            }
         }else {
-            setHealth((int) (100 * (Math.sqrt(java.lang.Double.valueOf(id)))));
-            setAttack((int) (10 * Math.sqrt(java.lang.Double.valueOf(id))));
+            if (Main.difficult == 1) {
+                setHealth((int) (150 * (Math.sqrt(java.lang.Double.valueOf(id)))));
+                setAttack((int) (20 * Math.sqrt(java.lang.Double.valueOf(id))));
+            } else if (Main.difficult == 2) {
+                setHealth((int) (200 * (Math.sqrt(java.lang.Double.valueOf(id)))));
+                setAttack((int) (30 * Math.sqrt(java.lang.Double.valueOf(id))));
+            } else if (Main.difficult == 3) {
+                setHealth((int) (250 * (Math.sqrt(java.lang.Double.valueOf(id)))));
+                setAttack((int) (40 * Math.sqrt(java.lang.Double.valueOf(id))));
+            }
         }
         setId(id);
     }
