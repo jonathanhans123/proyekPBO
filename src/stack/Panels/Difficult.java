@@ -24,21 +24,21 @@ public class Difficult {
         EASYButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showConfirmDialog(null, "you choose easy difficult");
+                JOptionPane.showMessageDialog(null, "you choose easy difficult");
                 Main.difficult = 1;
             }
         });
         MEDIUMButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showConfirmDialog(null, "you choose medium difficult");
+                JOptionPane.showMessageDialog(null, "you choose medium difficult");
                 Main.difficult = 2;
             }
         });
         HARDButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showConfirmDialog(null, "you choose hard difficult");
+                JOptionPane.showMessageDialog(null, "you choose hard difficult");
                 Main.difficult = 3;
             }
         });

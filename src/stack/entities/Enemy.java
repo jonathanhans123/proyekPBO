@@ -80,17 +80,6 @@ public class Enemy extends Entity{
 
     public Enemy(int x, int y, int width, int height, int dx, int dy,int id) {
         super(x,y,width,height,dx,dy);
-        if (Main.difficult == 1) {
-            setHealth(1000);
-            setAttack(100);
-        } else if (Main.difficult == 2) {
-            setHealth(1500);
-            setAttack(150);
-        } else if (Main.difficult == 3) {
-            setHealth(2000);
-            setAttack(200);
-        }
-
         if (id == 5) {
             if (Main.difficult == 1) {
                 setHealth(2000);
